@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    /* make backgroundWeatherApp.png background */
+    background-image: url('wdng4_sun_on_the_left_corner_a_river_at_the_center_left_side_of_976a506c-ad47-4b46-b384-c9541139e665.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
