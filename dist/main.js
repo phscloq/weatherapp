@@ -30,16 +30,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./default.js":
-/*!********************!*\
-  !*** ./default.js ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getWeather\": () => (/* binding */ getWeather)\n/* harmony export */ });\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ \"./api.js\");\n/* harmony import */ var _currentWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./currentWeather */ \"./currentWeather.js\");\n/* harmony import */ var _forecast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forecast */ \"./forecast.js\");\n\n\n\nasync function getWeather(city='Istanbul'){\n    const response = await (0,_api__WEBPACK_IMPORTED_MODULE_0__.showWeather)(city);\n    (0,_currentWeather__WEBPACK_IMPORTED_MODULE_1__.currentWeather)(response);\n    (0,_forecast__WEBPACK_IMPORTED_MODULE_2__.forecast)(response);\n}\n\n\n//# sourceURL=webpack://weatherapp/./default.js?");
-
-/***/ }),
-
 /***/ "./forecast.js":
 /*!*********************!*\
   !*** ./forecast.js ***!
@@ -160,13 +150,23 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./showWeather.js":
+/*!************************!*\
+  !*** ./showWeather.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getWeather\": () => (/* binding */ getWeather)\n/* harmony export */ });\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ \"./api.js\");\n/* harmony import */ var _currentWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./currentWeather */ \"./currentWeather.js\");\n/* harmony import */ var _forecast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forecast */ \"./forecast.js\");\n\n\n\nasync function getWeather(city='Istanbul'){\n    const response = await (0,_api__WEBPACK_IMPORTED_MODULE_0__.showWeather)(city);\n    (0,_currentWeather__WEBPACK_IMPORTED_MODULE_1__.currentWeather)(response);\n    (0,_forecast__WEBPACK_IMPORTED_MODULE_2__.forecast)(response);\n}\n\n\n//# sourceURL=webpack://weatherapp/./showWeather.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _default__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../default */ \"./default.js\");\n\n\nconsole.log(\"Working!\");\nconst button = document.querySelector('button');\nconst input = document.querySelector('input');\n(0,_default__WEBPACK_IMPORTED_MODULE_1__.getWeather)();\n    \n\nbutton.addEventListener('click', ()=>{\n    (0,_default__WEBPACK_IMPORTED_MODULE_1__.getWeather)(input.value);\n})\ninput.addEventListener('keypress', (e)=>{\n    if(e.key===\"Enter\"){\n        e.preventDefault();\n        button.click();\n    }\n})\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _showWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../showWeather */ \"./showWeather.js\");\n\n\nconsole.log(\"Working!\");\nconst button = document.querySelector('button');\nconst input = document.querySelector('input');\n(0,_showWeather__WEBPACK_IMPORTED_MODULE_1__.getWeather)();\n    \n\nbutton.addEventListener('click', ()=>{\n    (0,_showWeather__WEBPACK_IMPORTED_MODULE_1__.getWeather)(input.value);\n})\ninput.addEventListener('keypress', (e)=>{\n    if(e.key===\"Enter\"){\n        e.preventDefault();\n        button.click();\n    }\n})\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
 
 /***/ }),
 

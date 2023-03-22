@@ -1,5 +1,5 @@
 import './style.css';
-import { getWeather } from '../default';
+import { getWeather } from '../showWeather';
 console.log("Working!");
 const button = document.querySelector('button');
 const input = document.querySelector('input');
