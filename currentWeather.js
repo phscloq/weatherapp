@@ -1,4 +1,4 @@
-    import { showWeather } from "./weatherData";
+    import { showWeather } from "./api";
     
     const todayWeather = document.querySelector('.todayWText');
     const cityName = document.querySelector('.cityName');
