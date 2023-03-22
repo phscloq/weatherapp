@@ -10,6 +10,46 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./api.js":
+/*!****************!*\
+  !*** ./api.js ***!
+  \****************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"showWeather\": () => (/* binding */ showWeather)\n/* harmony export */ });\n\n\nasync function showWeather(c){\n    console.log(\"showWeather called\");\n\n    const request = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=4d1cd07a95bd4bc6beb95720231903&q=${c}&days=6`, {mode: 'cors'});\n    const response = await request.json();\n    \n    return response;\n}\n\n\n//# sourceURL=webpack://weatherapp/./api.js?");
+
+/***/ }),
+
+/***/ "./currentWeather.js":
+/*!***************************!*\
+  !*** ./currentWeather.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"currentWeather\": () => (/* binding */ currentWeather)\n/* harmony export */ });\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ \"./api.js\");\n    \n    \n    const todayWeather = document.querySelector('.todayWText');\n    const cityName = document.querySelector('.cityName');\n    const cityTempt = document.querySelector('.cityTemp');\n    /*********TODAY INFO SECTION********/\n    const feelsLike = document.querySelector('.feelsTemp')\n    const humidity = document.querySelector('.humidityPerc')\n    const rain = document.querySelector('.rainPerc')\n    function currentWeather(response){\n    cityName.textContent = `${response.location.name}`;\n    cityTempt.textContent = `${response.current.temp_c} °C`;\n\n    todayWeather.textContent = response.current.condition.text;\n    feelsLike.textContent = `${response.current.feelslike_c} °C`;\n    humidity.textContent = `${response.current.humidity} %`;\n    rain.textContent = `${response.forecast.forecastday[0].day.daily_chance_of_rain} %`;\n\n    console.log(response);\n    }\n    \n\n//# sourceURL=webpack://weatherapp/./currentWeather.js?");
+
+/***/ }),
+
+/***/ "./default.js":
+/*!********************!*\
+  !*** ./default.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getWeather\": () => (/* binding */ getWeather)\n/* harmony export */ });\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ \"./api.js\");\n/* harmony import */ var _currentWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./currentWeather */ \"./currentWeather.js\");\n/* harmony import */ var _forecast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forecast */ \"./forecast.js\");\n\n\n\nasync function getWeather(city='Istanbul'){\n    const response = await (0,_api__WEBPACK_IMPORTED_MODULE_0__.showWeather)(city);\n    (0,_currentWeather__WEBPACK_IMPORTED_MODULE_1__.currentWeather)(response);\n    (0,_forecast__WEBPACK_IMPORTED_MODULE_2__.forecast)(response);\n}\n\n\n//# sourceURL=webpack://weatherapp/./default.js?");
+
+/***/ }),
+
+/***/ "./forecast.js":
+/*!*********************!*\
+  !*** ./forecast.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"forecast\": () => (/* binding */ forecast)\n/* harmony export */ });\n\n\nconst dayTempts = document.querySelectorAll('.tempt')\nconst dayNames = document.querySelectorAll('#dayName');\nconst dayWeathers = document.querySelectorAll('img');\n\n \n \n /*********FORECAST SECTION********/\n function forecast(response){\n let i=1;\n dayNames.forEach((day)=>{\n    day.textContent = response.forecast.forecastday[i].date;\n    i++;\n    })\n    i=1;\n    dayTempts.forEach((day)=>{\n      \n    day.textContent = `${response.forecast.forecastday[i].day.avgtemp_c} °C`;\n    \n    i++;\n    })\n    i=1;\n    dayWeathers.forEach((day)=>{\n   \n    day.src = `https:${response.forecast.forecastday[i].day.condition.icon}`;\n\n    i++;\n    })\n}\n\n\n//# sourceURL=webpack://weatherapp/./forecast.js?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
@@ -126,7 +166,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _background_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./background.jpeg */ \"./src/background.jpeg\");\n\n\n\nconsole.log(\"Working!\");\n\nlet button = document.querySelector('button');\n    const input = document.querySelector('input');\n  \n    const todayWeather = document.querySelector('.todayWText');\n    const cityName = document.querySelector('.cityName');\n    const cityTempt = document.querySelector('.cityTemp');\n    /*********TODAY INFO SECTION********/\n    const feelsLike = document.querySelector('.feelsTemp')\n    const humidity = document.querySelector('.humidityPerc')\n    const rain = document.querySelector('.rainPerc')\n    /*********FORECAST SECTION********/\n    const dayTempts = document.querySelectorAll('.tempt')\n    const dayNames = document.querySelectorAll('#dayName');\n    const dayWeathers = document.querySelectorAll('img');\n    \nasync function showWeather(c='Istanbul'){\n    let i=1;\n\n    const request = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=4d1cd07a95bd4bc6beb95720231903&q=${c}&days=6`, {mode: 'cors'});\n    const response = await request.json();\n    cityName.textContent = `${response.location.name}`;\n    cityTempt.textContent = `${response.current.temp_c} °C`;\n\n    todayWeather.textContent = response.current.condition.text;\n    feelsLike.textContent = `${response.current.feelslike_c} °C`;\n    humidity.textContent = `${response.current.humidity} %`;\n    rain.textContent = `${response.forecast.forecastday[0].day.daily_chance_of_rain} %`;\n\n    console.log(response);\n    /*********FORECAST SECTION********/\n    dayNames.forEach((day)=>{\n    day.textContent = response.forecast.forecastday[i].date;\n    i++;\n    })\n    i=1;\n    dayTempts.forEach((day)=>{\n      \n    day.textContent = `${response.forecast.forecastday[i].day.avgtemp_c} °C`;\n    \n    i++;\n    })\n    i=1;\n    dayWeathers.forEach((day)=>{\n   \n    day.src = `https:${response.forecast.forecastday[i].day.condition.icon}`;\n\n    i++;\n    })\n}\nshowWeather();\nbutton.addEventListener('click', ()=>{\n    showWeather(input.value);\n})\ninput.addEventListener('keypress', (e)=>{\n    if(e.key===\"Enter\"){\n        e.preventDefault();\n        button.click();\n    }\n})\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _default__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../default */ \"./default.js\");\n\n\nconsole.log(\"Working!\");\nconst button = document.querySelector('button');\nconst input = document.querySelector('input');\n(0,_default__WEBPACK_IMPORTED_MODULE_1__.getWeather)();\n    \n\nbutton.addEventListener('click', ()=>{\n    (0,_default__WEBPACK_IMPORTED_MODULE_1__.getWeather)(input.value);\n})\ninput.addEventListener('keypress', (e)=>{\n    if(e.key===\"Enter\"){\n        e.preventDefault();\n        button.click();\n    }\n})\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
 
 /***/ }),
 
