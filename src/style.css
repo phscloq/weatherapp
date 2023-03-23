@@ -124,3 +124,17 @@ img{
     height: 100px;
     width: 100px;
 }
+/******FOOTER SECTION CSS*******/
+.footer p{
+    color: black;
+    font-size: 1rem;
+   
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+ text-align: center;
+}
+a{
+    color: black;
+}
